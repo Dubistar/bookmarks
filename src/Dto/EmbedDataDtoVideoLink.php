@@ -2,7 +2,7 @@
 
 namespace App\Dto;
 
-class DtoVideoLink extends AbstractDtoBaseLink
+class EmbedDataDtoVideoLink extends AbstractDtoBaseLink
 {
     private ?int $duration;
 

@@ -2,18 +2,22 @@
 
 namespace App\DtoTransformer;
 
-use App\Dto\DtoPictureLink;
-use App\Factory\EmbedDataInterface;
+use App\Dto\EmbedDataDtoPictureLink;
+use App\Factory\EmbedDataDtoInterface;
 use Embed\Embed;
 
-class DtoPictureLinkTransformer implements EmbedDataInterface
+class EmbedDataDtoPictureLinkTransformer implements EmbedDataDtoInterface
 {
-    public function getEmbedData(string $url):DtoPictureLink
+    public function context(string $context):bool
+    {
+        return $context === 'picture';
+    }
+    public function getEmbedData(string $url):EmbedDataDtoPictureLink
     {
         $embed = new Embed();
         $info = $embed->get($url);
 
-        $dtoPictureLink = new DtoPictureLink();
+        $dtoPictureLink = new EmbedDataDtoPictureLink();
         $dtoPictureLink->setTitle($info->title);
         $dtoPictureLink->setUrl($info->url);
         $dtoPictureLink->setWidth($info->code->width);

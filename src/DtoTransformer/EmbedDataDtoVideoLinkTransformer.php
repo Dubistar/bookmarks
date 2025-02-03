@@ -2,18 +2,23 @@
 
 namespace App\DtoTransformer;
 
-use App\Dto\DtoVideoLink;
-use App\Factory\EmbedDataInterface;
+use App\Dto\EmbedDataDtoVideoLink;
+use App\Factory\EmbedDataDtoInterface;
 use Embed\Embed;
 
-class DtoVideoLinkTransformer implements EmbedDataInterface
+class EmbedDataDtoVideoLinkTransformer implements EmbedDataDtoInterface
 {
-    public function getEmbedData(string $url):DtoVideoLink
+    public function context(string $context):bool
+    {
+        return $context === 'video';
+    }
+
+    public function getEmbedData(string $url):EmbedDataDtoVideoLink
     {
         $embed = new Embed();
         $info = $embed->get($url);
 
-        $dtoVideoLink = new DtoVideoLink();
+        $dtoVideoLink = new EmbedDataDtoVideoLink();
         $dtoVideoLink->setTitle($info->title);
         $dtoVideoLink->setUrl($info->url);
         $dtoVideoLink->setWidth($info->code->width);

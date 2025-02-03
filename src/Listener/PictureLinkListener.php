@@ -3,7 +3,7 @@
 namespace App\Listener;
 
 use App\Entity\PictureLink;
-use App\Factory\EmbedDataFactory;
+use App\Factory\EmbedDataDtoFactory;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
@@ -15,21 +15,26 @@ class PictureLinkListener
 {
     const string CONTEXT = 'picture';
     public function __construct(
-        private SerializerInterface $serializer
+        private SerializerInterface $serializer,
+        private EmbedDataDtoFactory $embedDataDtoFactory
     )
     {
     }
 
     public function prePersist(PictureLink $pictureLink, LifecycleEventArgs $eventArgs):void
     {
-        $transformer = EmbedDataFactory::getTransformer(self::CONTEXT);
-        $embedData = $transformer->getEmbedData($pictureLink->getUrl());
+        $transformer = $this->embedDataDtoFactory->getTransformer(self::CONTEXT);
 
-        $jsonEmbedData = $this->serializer->serialize($embedData,'json');
+        if($transformer){
+            $embedData = $transformer->getEmbedData($pictureLink->getUrl());
 
-         $this->serializer->deserialize($jsonEmbedData, PictureLink::class, 'json', [
-            AbstractNormalizer::OBJECT_TO_POPULATE => $pictureLink
-        ]);
+            $jsonEmbedData = $this->serializer->serialize($embedData,'json');
+
+            $this->serializer->deserialize($jsonEmbedData, PictureLink::class, 'json', [
+                AbstractNormalizer::OBJECT_TO_POPULATE => $pictureLink
+            ]);
+        }
+
 
     }
 }
