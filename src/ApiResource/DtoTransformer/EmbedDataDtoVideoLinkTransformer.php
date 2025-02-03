@@ -1,9 +1,9 @@
 <?php
 
-namespace App\DtoTransformer;
+namespace App\src\ApiResource\DtoTransformer;
 
-use App\Dto\EmbedDataDtoVideoLink;
-use App\Factory\EmbedDataDtoInterface;
+use App\src\ApiResource\Dto\EmbedDataDtoVideoLink;
+use App\src\ApiResource\Factory\EmbedDataDtoInterface;
 use Embed\Embed;
 
 class EmbedDataDtoVideoLinkTransformer implements EmbedDataDtoInterface

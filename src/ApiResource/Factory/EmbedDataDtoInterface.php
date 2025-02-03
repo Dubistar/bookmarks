@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\src\ApiResource\Factory;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 #[AutoconfigureTag(self::CONTEXT)]

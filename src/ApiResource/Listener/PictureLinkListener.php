@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Listener;
+namespace App\src\ApiResource\Listener;
 
 use App\Entity\PictureLink;
-use App\Factory\EmbedDataDtoFactory;
+use App\src\ApiResource\Factory\EmbedDataDtoFactory;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;

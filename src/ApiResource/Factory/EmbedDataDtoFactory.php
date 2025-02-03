@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Factory;
+namespace App\src\ApiResource\Factory;
 
-use App\DtoTransformer\EmbedDataDtoPictureLinkTransformer;
-use App\DtoTransformer\EmbedDataDtoVideoLinkTransformer;
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
 class EmbedDataDtoFactory

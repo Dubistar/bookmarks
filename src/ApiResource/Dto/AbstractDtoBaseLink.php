@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto;
+namespace App\src\ApiResource\Dto;
 
 abstract class AbstractDtoBaseLink
 {
