@@ -20,9 +20,6 @@ abstract class BaseLink
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $url = null;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -65,19 +62,4 @@ abstract class BaseLink
     {
         $this->createdAt = new \DateTimeImmutable();
     }
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function setUrl(string $url): static
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-
-
 }
