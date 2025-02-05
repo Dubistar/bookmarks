@@ -17,10 +17,9 @@ class EmbedDataDtoVideoLinkTransformer implements EmbedDataDtoInterface
     {
         $embed = new Embed();
         $info = $embed->get($url);
-
         $dtoVideoLink = new EmbedDataDtoVideoLink();
         $dtoVideoLink->setTitle($info->title);
-        $dtoVideoLink->setUrl($info->url);
+        $dtoVideoLink->setUrl($url);
         $dtoVideoLink->setWidth($info->code->width);
         $dtoVideoLink->setHeight($info->code->height);
         $dtoVideoLink->setAuthor($info->authorName);

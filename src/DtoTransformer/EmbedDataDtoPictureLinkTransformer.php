@@ -19,7 +19,7 @@ class EmbedDataDtoPictureLinkTransformer implements EmbedDataDtoInterface
 
         $dtoPictureLink = new EmbedDataDtoPictureLink();
         $dtoPictureLink->setTitle($info->title);
-        $dtoPictureLink->setUrl($info->url);
+        $dtoPictureLink->setUrl($url);
         $dtoPictureLink->setWidth($info->code->width);
         $dtoPictureLink->setHeight($info->code->height);
         $dtoPictureLink->setAuthor($info->authorName);

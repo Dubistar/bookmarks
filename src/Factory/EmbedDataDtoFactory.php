@@ -4,11 +4,11 @@ namespace App\Factory;
 
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
-class EmbedDataDtoFactory
+readonly class EmbedDataDtoFactory
 {
 
     public function __construct(
-        #[AutowireIterator(EmbedDataDtoInterface::CONTEXT)]private readonly iterable $embedDataTransformers
+        #[AutowireIterator(EmbedDataDtoInterface::CONTEXT)]private iterable $embedDataTransformers
     )
     {
     }

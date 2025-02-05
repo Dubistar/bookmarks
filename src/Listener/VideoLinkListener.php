@@ -21,7 +21,7 @@ class VideoLinkListener
     {
     }
 
-    public function prePersist(VideoLink $pictureLink, LifecycleEventArgs $eventArgs):void
+    public function prePersist(VideoLink $pictureLink):void
     {
         $transformer = $this->embedDataDtoFactory->getTransformer(self::CONTEXT);
 
